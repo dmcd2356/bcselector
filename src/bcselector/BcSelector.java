@@ -68,6 +68,11 @@ public class BcSelector {
     // create the main panel and controls
     mainFrame = new GuiControls();
     createMainPanel();
+    
+    // setup the storage paths
+    serverConnection.sendMessage("PATHLOG: danlauncher/.bcextractor/");
+    serverConnection.sendMessage("PATHCLASS: danlauncher/classes/");
+    serverConnection.sendMessage("PATHJAVAP: danlauncher/javap/");
   }
   
   /**
@@ -218,7 +223,7 @@ public class BcSelector {
       enableControlSelections(true);
       
       // tell server which jar file is selected
-      serverConnection.sendMessage("jar: " + jarFile.getAbsolutePath());
+      serverConnection.sendMessage("JAR: " + jarFile.getAbsolutePath());
     }
   }
 
@@ -241,9 +246,9 @@ public class BcSelector {
     @Override
     public void actionPerformed(java.awt.event.ActionEvent evt) {
       // tell the server we want to generate bytecode now
-      serverConnection.sendMessage("class: " + classCombo.getSelectedItem().toString());
-      serverConnection.sendMessage("method: " + methodCombo.getSelectedItem().toString());
-      serverConnection.sendMessage("get_bytecode");
+      serverConnection.sendMessage("CLASS: " + classCombo.getSelectedItem().toString());
+      serverConnection.sendMessage("METHOD: " + methodCombo.getSelectedItem().toString());
+      serverConnection.sendMessage("GET_BYTECODE");
     }
   }
 
